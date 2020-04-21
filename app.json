@@ -8,12 +8,13 @@
       "web"
     ],
     "version": "1.0.0",
+    "backgroundColor":"#ffed00",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ffed00"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,6 +24,13 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#ffed00"
+    },
+    "android": {
+      "package": "fi.seiska.expo",
+      "versionCode": 1
     }
   }
 }

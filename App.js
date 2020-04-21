@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { ToastAndroid } from 'react-native';
 import styled from 'styled-components/native';
 import { WebView } from 'react-native-webview';
