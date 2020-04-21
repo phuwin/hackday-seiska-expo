@@ -1,19 +1,36 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { ToastAndroid } from 'react-native';
 import styled from 'styled-components/native';
+import { WebView } from 'react-native-webview';
+import Constants from 'expo-constants';
+import Bar from './Bar';
+import IconButton from './IconButton';
 
-
-const StyledView = styled.View`
-  flex: 1;
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
+const View = styled.View`
+  height: 100%;
+  display: flex;
+  margin-top: ${Constants.statusBarHeight}px;
 `;
 
 export default function App() {
+  if (Constants.platform === 'android') ToastAndroid.show('Welcome !', ToastAndroid.LONG);
+  const webViewRef = useRef();
+  const goBack = () => {
+    if (webViewRef && webViewRef.current) webViewRef.current.goBack();
+  };
+  const reload = () => {
+    if (webViewRef && webViewRef.current) webViewRef.current.reload();
+  };
   return (
-    <StyledView>
-      <Text>Open up App.js to start working on your app!</Text>
-    </StyledView>
+    <View>
+      <WebView
+        source={{ uri: 'https://seiska.fi' }}
+        ref={(ref) => { webViewRef.current = ref; }}
+      />
+      <Bar>
+        <IconButton color="red" icon="md-return-left" onPress={goBack} />
+        <IconButton color="red" icon="md-refresh" onPress={reload} />
+      </Bar>
+    </View>
   );
 }
